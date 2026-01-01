@@ -1,0 +1,7 @@
+# Flutter
+.dart_tool/
+build/
+
+# Android signing
+android/key.properties
+android/app/*.jks
