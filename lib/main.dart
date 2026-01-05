@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'core/theme/app_theme.dart';
 import 'pages/splash_page.dart';
 
 void main() {
-  print("🚀 App started");
   runApp(const MyApp());
 }
 
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashPage(),
+      theme: AppTheme.light(),
+      home: const SplashPage(),
     );
   }
 }
+
