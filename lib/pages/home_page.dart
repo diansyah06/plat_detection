@@ -541,13 +541,6 @@ class _ResultView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 14),
-                _Metric(
-                  label: 'Akurasi',
-                  value: '${confidencePct.toStringAsFixed(1)}%',
-                  progress: confidencePct / 100,
-                  color: colorScheme.secondary,
-                ),
-                const SizedBox(height: 14),
                 _KeyValue(
                   label: 'Daerah',
                   value: result.daerah ?? 'Tidak terdeteksi',
@@ -571,54 +564,6 @@ class _ResultView extends StatelessWidget {
         _InfoPill(
           icon: Icons.tips_and_updates_rounded,
           text: 'Tips: pastikan foto terang dan tidak blur.',
-        ),
-      ],
-    );
-  }
-}
-
-class _Metric extends StatelessWidget {
-  final String label;
-  final String value;
-  final double progress;
-  final Color color;
-
-  const _Metric({
-    required this.label,
-    required this.value,
-    required this.progress,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Expanded(child: Text(label, style: textTheme.bodyMedium)),
-            Text(value, style: textTheme.titleLarge),
-          ],
-        ),
-        const SizedBox(height: 8),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(999),
-          child: TweenAnimationBuilder<double>(
-            tween: Tween(begin: 0, end: progress.clamp(0, 1)),
-            duration: const Duration(milliseconds: 900),
-            curve: Curves.easeOutCubic,
-            builder: (context, p, _) {
-              return LinearProgressIndicator(
-                value: p,
-                minHeight: 10,
-                backgroundColor: color.withOpacity(0.14),
-                valueColor: AlwaysStoppedAnimation(color),
-              );
-            },
-          ),
         ),
       ],
     );
